@@ -20,7 +20,7 @@ const theme = createTheme({
       default: "#linear-gradient(to right, #E28400, #FFB04C)",
     },
     primary: {
-      main: "#EF8F00",
+      main: "#5DA571",
       contrastText: "#ffffff",
     },
     secondary: {
@@ -49,50 +49,60 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "Poppins, Roboto, Arial, sans-serif",
+    fontFamily: "Inter, sans-serif",
     h1: {
       fontWeight: 500,
-      fontSize: "36px",
+      fontSize: "40px",
       lineHeight: 1.2,
+      color: "#333C4A",
     },
     h2: {
       fontWeight: 400,
       fontSize: "32px",
       lineHeight: 1.3,
+      color: "#333C4A",
     },
     h3: {
       fontWeight: 400,
       fontSize: "28px",
       lineHeight: 1.4,
+      color: "#333C4A",
     },
     h4: {
       fontWeight: 400,
       fontSize: "24px",
       lineHeight: 1.5,
+      color: "#333C4A",
     },
     h5: {
       fontWeight: 400,
       fontSize: "20px",
       lineHeight: 1.6,
+      color: "#333C4A",
     },
     h6: {
       fontWeight: 400,
       fontSize: "18px",
       lineHeight: 1.7,
+      color: "#333C4A",
     },
     body1: {
       fontSize: "16px",
       lineHeight: 1.6,
+      color: "#333C4A",
     },
     body2: {
-      fontSize: "14px",
+      fontSize: "13px",
       lineHeight: 1.5,
+      color: "#333C4A",
     },
     subtitle1: {
       fontSize: "12px",
+      color: "#333C4A",
     },
     subtitle2: {
       fontSize: "10px",
+      color: "#333C4A",
     },
   },
   spacing: 8,

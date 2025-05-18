@@ -1,4 +1,4 @@
-// src/components/ForgotPassword.jsx
+// src/components/NewPassword.jsx
 import React, { useState } from "react";
 import { Box, Grid, Typography, TextField, Button } from "@mui/material";
 import { Formik, Form, Field } from "formik";
@@ -9,16 +9,24 @@ import bannerImg from "../../../assets/banner2.png";
 import _ from "lodash";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
-const emailValidationSchema = Yup.object({
-  email: Yup.string().required("Please enter Email/Mobile No"),
+const passwordValidationSchema = Yup.object({
+  password: Yup.string()
+    .min(8, "Password must be at least 8 characters")
+    .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
+    .matches(
+      /[!@#$%^&*(),.?":{}|<>]/,
+      "Password must contain at least one special character"
+    )
+    .required("Password is required"),
+
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref("password"), null], "Passwords must match")
+    .required("Confirm Password is required"),
 });
-const ForgotPassword = () => {
+const NewPassword = () => {
   const navigateTo = useNavigate();
   const handleSubmit = (values, { setSubmitting }) => {
     console.log("Form values:", values);
-    if (values?.email) {
-      navigateTo("/createpassword");
-    }
   };
   const navigator = {
     display: "flex",
@@ -50,7 +58,7 @@ const ForgotPassword = () => {
           p: 4,
         }}
       >
-        <div style={navigator} onClick={() => navigateTo("/")}>
+        <div style={navigator} onClick={() => navigateTo("/forgotpassword")}>
           <ArrowBackIosIcon
             fontSize="12px"
             sx={{ alignSelf: "flex-start", mt: 0.2 }}
@@ -61,28 +69,47 @@ const ForgotPassword = () => {
         </div>
         <Box sx={{ maxWidth: 450, width: "100%", textAlign: "center" }}>
           <Typography variant="h5" component="h2" fontWeight={600}>
-            Forgot Password
+            Create New Password
           </Typography>
           <Typography variant="subtitle1" component="h2" mb={8}>
-            Enter your Email or Phone Number to reset your Password
+            Please Create your New Password to visit your Dashboard
           </Typography>
           <Formik
-            initialValues={{ email: "" }}
-            validationSchema={emailValidationSchema}
+            initialValues={{ password: "", confirmPassword: "" }}
+            validationSchema={passwordValidationSchema}
             onSubmit={handleSubmit}
             enableReinitialize={true}
           >
             {({ errors, touched, isSubmitting }) => (
               <Form>
                 <Typography variant="body2" align="left" sx={{ mb: 1 }}>
-                  {"Email ID / Mobile No"}
+                  {"Create Password"}
                 </Typography>
                 <Field
                   as={TextField}
-                  name="email"
+                  name="password"
                   fullWidth
-                  error={touched.email && Boolean(errors.email)}
-                  helperText={touched.email && errors.email}
+                  error={touched.password && Boolean(errors.password)}
+                  helperText={touched.password && errors.password}
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      borderRadius: 24,
+                      height: 48,
+                    },
+                    mb: 2,
+                  }}
+                />
+                <Typography variant="body2" align="left" sx={{ mb: 1 }}>
+                  {"Confirm Password"}
+                </Typography>
+                <Field
+                  as={TextField}
+                  name="confirmPassword"
+                  fullWidth
+                  error={
+                    touched.confirmPassword && Boolean(errors.confirmPassword)
+                  }
+                  helperText={touched.confirmPassword && errors.confirmPassword}
                   sx={{
                     "& .MuiOutlinedInput-root": {
                       borderRadius: 24,
@@ -119,4 +146,4 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+export default NewPassword;
