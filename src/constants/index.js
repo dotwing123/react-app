@@ -1,0 +1,8 @@
+export const API_ENDPOINTS = {
+  //API ENDPOINTS
+};
+
+export const ACTION_TYPES = {
+  AUTHORIZER: "AUTHORIZER",
+  LOGGED_USER_DATA: "LOGGED_USER_DATA",
+};

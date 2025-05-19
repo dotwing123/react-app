@@ -197,6 +197,7 @@ const HomeChefLogin = () => {
                   <Field
                     as={TextField}
                     name="password"
+                    type="password"
                     fullWidth
                     error={touched.password && Boolean(errors.password)}
                     helperText={touched.password && errors.password}
@@ -258,7 +259,7 @@ const HomeChefLogin = () => {
           <div style={loginTypeContainer}>
             {_.map(loginType, (item, idx) => {
               return (
-                <div style={loginTypeItem}>
+                <div style={loginTypeItem} key={idx}>
                   <img src={item?.icon} height={20} alt="login_icon" />
                   <Typography variant="subtitle2">{item?.label}</Typography>
                 </div>
