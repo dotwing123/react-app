@@ -20,6 +20,8 @@ import theme from "../../../theme";
 import { useNavigate } from "react-router-dom";
 import bannerImg from "../../../assets/banner2.png";
 import _ from "lodash";
+import { useDispatch } from "react-redux";
+import secureLocalStorage from "react-secure-storage";
 // Validation schema using Yup
 const otpValidationSchema = Yup.object({
   fullName: Yup.string().required("Full name is required"),
@@ -56,11 +58,15 @@ const loginType = [
 ];
 const HomeChefLogin = () => {
   const navigateTo = useNavigate();
+  const dispatch = useDispatch();
   const [isOtpLogin, setIsOtpLogin] = useState(false);
   const handleSubmit = (values, { setSubmitting }) => {
     console.log("Form values:", values);
     if (isOtpLogin && values?.fullName && values?.mobileNo) {
       navigateTo("/verifyotp");
+    } else {
+      secureLocalStorage.setItem("appTkn", "abcdefgh");
+      navigateTo("/dashboard");
     }
   };
   const loginTypeContainer = {

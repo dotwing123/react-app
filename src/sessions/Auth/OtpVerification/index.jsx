@@ -15,6 +15,7 @@ const OtpVerification = () => {
   const [otp, setOtp] = useState("");
   const handleSubmit = (values, { setSubmitting }) => {
     console.log("Form values:", values);
+    secureLocalStorage.setItem("appTkn", "abcdefgh");
   };
   const navigator = {
     display: "flex",
@@ -151,6 +152,7 @@ const OtpVerification = () => {
             fullWidth
             variant="contained"
             color="primary"
+            disabled={otp?.length < 6}
             sx={{
               py: 1.5,
               textTransform: "uppercase",
@@ -158,6 +160,7 @@ const OtpVerification = () => {
               mb: 2,
               borderRadius: 24,
             }}
+            onClick={() => handleSubmit()}
           >
             Verify
           </Button>
