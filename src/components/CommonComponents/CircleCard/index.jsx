@@ -1,25 +1,26 @@
-import { Box, Typography } from '@mui/material';
-import chinese from '../../../assets/chinese.png'
-import './circleCard.css'
+import { Box, Typography } from "@mui/material";
+import "./circleCard.css";
 
-const CircleCard = () => {
-    return (
-        <div className='circleCard'>
-            <Box
-                sx={{
-                    borderRadius: '50%',
-                    background: '#000',
-                    height: 200,
-                    width: 200,
-                    backgroundImage: `url(${chinese})`,
-                    backgroundSize: 'cover',
-                    backgroundRepeat: 'no-repeat'
-                }}>
-
-            </Box>
-            <Typography sx={{my : 2}}>Chinese</Typography>
-        </div>
-    );
-}
+const CircleCard = ({ image, title }) => {
+  return (
+    <div className="circleCard">
+      <Box
+        sx={{
+          borderRadius: "50%",
+          background: "#000",
+          height: 190,
+          width: 190,
+          backgroundImage: `url(${image})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          boxShadow: "0px 2px 6px 3px rgba(0, 0, 0, 0.25)",
+        }}
+      ></Box>
+      <Typography variant="body1" fontWeight={500} sx={{ my: 2 }}>
+        {title}
+      </Typography>
+    </div>
+  );
+};
 
 export default CircleCard;

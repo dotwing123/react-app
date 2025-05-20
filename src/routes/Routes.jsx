@@ -7,6 +7,8 @@ import ForgotPassword from "../sessions/Auth/ForgotPassword";
 import OtpVerification from "../sessions/Auth/OtpVerification";
 import PrivateRoute from "../components/PrivateRoute";
 import Home from "../sessions/Home";
+import Cuisines from "../sessions/Cuisines";
+import Chefs from "../sessions/Chefs";
 
 const LoadingFallback = () => (
   <Box
@@ -31,9 +33,14 @@ const AppRoutes = () => {
             <Route path="/verifyotp" element={<OtpVerification />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/createpassword" element={<NewPassword />} />
+            <Route path="/home" element={<PrivateRoute element={<Home />} />} />
             <Route
-              path="/dashboard"
-              element={<PrivateRoute element={<Home />} />}
+              path="/home/cuisines"
+              element={<PrivateRoute element={<Cuisines />} />}
+            />
+            <Route
+              path="/home/chefs"
+              element={<PrivateRoute element={<Chefs />} />}
             />
           </Routes>
         </Suspense>

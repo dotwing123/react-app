@@ -36,7 +36,9 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ReceiptIcon from "@mui/icons-material/Receipt";
 import Logo from "../../../assets/dashboardLogo.png";
 import Sidebar from "../SideBar";
+import { useNavigate } from "react-router-dom";
 const Header = () => {
+  const navigateTo = useNavigate();
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const toggleDrawer = (open) => {
@@ -47,7 +49,7 @@ const Header = () => {
     <Box sx={{ flexGrow: 1 }}>
       {/* AppBar */}
       <AppBar
-        position="static"
+        position="sticky"
         color="default"
         elevation={1}
         sx={{ bgcolor: "#fff", height: 100, justifyContent: "center" }}
@@ -66,8 +68,18 @@ const Header = () => {
           <Box sx={{ flexGrow: 1 }} />
 
           {/* Navigation Items */}
-          <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: 3,
+              cursor: "pointer",
+            }}
+          >
+            <Box
+              sx={{ display: "flex", alignItems: "center", gap: 1 }}
+              onClick={() => navigateTo("/home/chefs")}
+            >
               <RestaurantIcon color="action" />
               <Typography
                 variant="body1"
@@ -78,7 +90,15 @@ const Header = () => {
               </Typography>
             </Box>
 
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 1,
+                cursor: "pointer",
+              }}
+              onClick={() => navigateTo("/home/cuisines")}
+            >
               <MenuBookIcon sx={{ color: "success.main" }} />
               <Typography
                 variant="body1"
@@ -132,7 +152,6 @@ const Header = () => {
       <Sidebar open={drawerOpen} onClose={() => toggleDrawer(false)} />
 
       {/* Main Content */}
-      
     </Box>
   );
 };

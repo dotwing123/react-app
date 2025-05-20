@@ -66,7 +66,7 @@ const HomeChefLogin = () => {
       navigateTo("/verifyotp");
     } else {
       secureLocalStorage.setItem("appTkn", "abcdefgh");
-      navigateTo("/dashboard");
+      navigateTo("/home");
     }
   };
   const loginTypeContainer = {
