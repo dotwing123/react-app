@@ -20,7 +20,7 @@ const Footer = () => {
   return (
     <Box
       component="footer"
-      sx={{ mt: "auto", position: "fixed", bottom: 0, width: "100%" }}
+      sx={{ mt: "auto", /* position: "fixed", */ bottom: 0, width: "100%" }}
     >
       {/* App Download Section */}
       <Box

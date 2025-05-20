@@ -132,16 +132,7 @@ const Header = () => {
       <Sidebar open={drawerOpen} onClose={() => toggleDrawer(false)} />
 
       {/* Main Content */}
-      <Container>
-        <Box sx={{ mt: 4, mb: 4 }}>
-          <Typography variant="h4" component="h1" gutterBottom>
-            Welcome to Food Delivery
-          </Typography>
-          <Typography variant="body1">
-            Click the menu icon in the top left to open the sidebar.
-          </Typography>
-        </Box>
-      </Container>
+      
     </Box>
   );
 };
