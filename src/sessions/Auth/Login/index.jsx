@@ -8,6 +8,7 @@ import {
   Button,
   Divider,
   InputAdornment,
+  useMediaQuery,
 } from "@mui/material";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
@@ -59,6 +60,8 @@ const loginType = [
 const HomeChefLogin = () => {
   const navigateTo = useNavigate();
   const dispatch = useDispatch();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
   const [isOtpLogin, setIsOtpLogin] = useState(false);
   const handleSubmit = (values, { setSubmitting }) => {
     console.log("Form values:", values);
@@ -70,7 +73,7 @@ const HomeChefLogin = () => {
     }
   };
   const loginTypeContainer = {
-    display: "flex",
+    display: isMobile ? "block" : "flex",
     flexDirection: "row",
     gap: 5,
     justifyContent: "center",
@@ -83,18 +86,22 @@ const HomeChefLogin = () => {
     paddingInline: 5,
     paddingBlock: 10,
     alignItems: "center",
+    justifyContent: "center",
     borderRadius: 4,
+    marginBottom: isMobile || isTablet ? 4 : 0,
   };
   return (
     <Grid container sx={{ height: "100vh" }}>
-      <Grid item xs={12} md={6}>
-        <AuthLeftSection
-          content1={"Let’s help you"}
-          content2={"find your favorite"}
-          description={"Meal"}
-          bannerImg={bannerImg}
-        />
-      </Grid>
+      {!isMobile && !isTablet && (
+        <Grid item xs={12} md={6}>
+          <AuthLeftSection
+            content1={"Let’s help you"}
+            content2={"find your favorite"}
+            description={"Meal"}
+            bannerImg={bannerImg}
+          />
+        </Grid>
+      )}
       <Grid
         item
         xs={12}

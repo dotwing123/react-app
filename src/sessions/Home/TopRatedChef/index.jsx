@@ -10,11 +10,12 @@ import {
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { nearByShops } from "../../../constants/data";
 import CardComponent from "../../../components/CommonComponents/Card";
+import { useSelector } from "react-redux";
 
 const TopRatedChefCarousel = () => {
   const theme = useTheme();
+  const chefs = useSelector((state) => state?.sampleData?.chefs);
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const scrollContainerRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -119,7 +120,7 @@ const TopRatedChefCarousel = () => {
           py: 2,
         }}
       >
-        {nearByShops.map((item, idx) => (
+        {chefs.map((item, idx) => (
           <Box key={idx} sx={{ flexShrink: 0, pl: 1 }}>
             <CardComponent data={item} />
           </Box>

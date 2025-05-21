@@ -1,6 +1,13 @@
 // src/components/ForgotPassword.jsx
 import React, { useState } from "react";
-import { Box, Grid, Typography, TextField, Button } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Typography,
+  TextField,
+  Button,
+  useMediaQuery,
+} from "@mui/material";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import AuthLeftSection from "../../../components/AuthLeftSection";
@@ -8,12 +15,15 @@ import { useNavigate } from "react-router-dom";
 import bannerImg from "../../../assets/banner2.png";
 import _ from "lodash";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import theme from "../../../theme";
 
 const emailValidationSchema = Yup.object({
   email: Yup.string().required("Please enter Email/Mobile No"),
 });
 const ForgotPassword = () => {
   const navigateTo = useNavigate();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
   const handleSubmit = (values, { setSubmitting }) => {
     console.log("Form values:", values);
     if (values?.email) {
@@ -30,14 +40,16 @@ const ForgotPassword = () => {
   };
   return (
     <Grid container sx={{ height: "100vh" }}>
-      <Grid item xs={12} md={6}>
-        <AuthLeftSection
-          content1={"Get your favorite"}
-          content2={"food at your"}
-          description={"Door Step"}
-          bannerImg={bannerImg}
-        />
-      </Grid>
+      {!isMobile && !isTablet && (
+        <Grid item xs={12} md={6}>
+          <AuthLeftSection
+            content1={"Get your favorite"}
+            content2={"food at your"}
+            description={"Door Step"}
+            bannerImg={bannerImg}
+          />
+        </Grid>
+      )}
       <Grid
         item
         xs={12}

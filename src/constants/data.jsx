@@ -1,8 +1,27 @@
+import { useEffect } from "react";
 import Chef from "../assets/chef.png";
 import Chef1 from "../assets/chef_1.png";
 import Chef2 from "../assets/chef_2.png";
+import { useDispatch } from "react-redux";
+import {
+  setChefs,
+  setCuisines,
+  setFoods,
+  setNearByShops,
+} from "../store/datasource/action";
 
-export const cuisines = [
+const SaveData = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setChefs(nearByShops));
+    dispatch(setCuisines(cuisines));
+    dispatch(setNearByShops(nearByShops));
+    dispatch(setFoods(foods));
+  }, []);
+  return <></>;
+};
+export default SaveData;
+const cuisines = [
   {
     id: 1,
     title: "Chinese",
@@ -65,7 +84,7 @@ export const cuisines = [
   },
 ];
 
-export const nearByShops = [
+const nearByShops = [
   {
     chefImage: Chef,
     shopName: "Home Street Kitchen",
@@ -131,7 +150,7 @@ export const nearByShops = [
   },
 ];
 
-export const foods = [
+const foods = [
   {
     title: "Risotto",
     price: "$2.5",

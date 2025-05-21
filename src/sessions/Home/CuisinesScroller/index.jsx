@@ -11,10 +11,11 @@ import {
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import CuisineCard from "../../../components/CommonComponents/CircleCard";
-import { cuisines } from "../../../constants/data";
+import { useSelector } from "react-redux";
 
 const CuisineCarousel = () => {
   const theme = useTheme();
+  const cuisines = useSelector((state) => state?.sampleData?.cuisines);
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const scrollContainerRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);

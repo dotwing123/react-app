@@ -9,17 +9,20 @@ import {
   Box,
   IconButton,
   Rating,
+  useTheme,
+  useMediaQuery,
 } from "@mui/material";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import FoodImage from "../../../assets/food.png";
 export default function FoodCard(props) {
   const { title, price, cuisine, description, rating, imageUrl } = props?.data;
   const [favorite, setFavorite] = React.useState(false);
-
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <Card
       sx={{
-        maxWidth: 326,
+        maxWidth: isMobile ? 280 : 326,
         borderRadius: "6px",
         boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
         overflow: "hidden",

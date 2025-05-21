@@ -7,6 +7,7 @@ import TopRatedChefCarousel from "./TopRatedChef";
 import TodaySpecial from "./TodaySpecial";
 import HeroSection from "./HeroSection";
 import FoodCarousel from "./FoodScroller";
+import SaveData from "../../constants/data";
 const Home = () => {
   const navigateTo = useNavigate();
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       <TodaySpecial />
       <TopRatedChefCarousel />
       <FoodCarousel />
+      <SaveData />
     </>
   );
 };

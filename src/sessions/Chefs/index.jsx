@@ -4,13 +4,18 @@ import {
   InputAdornment,
   TextField,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import React from "react";
 import CardComponent from "../../components/CommonComponents/Card";
 import SearchIcon from "@mui/icons-material/Search";
 import TuneOutlinedIcon from "@mui/icons-material/TuneOutlined";
-import { nearByShops } from "../../constants/data";
+import { useSelector } from "react-redux";
 export default function Chefs() {
+  const chefs = useSelector((state) => state?.sampleData?.chefs);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <Box sx={{ px: 5, py: 4 }}>
       <Box
@@ -50,7 +55,7 @@ export default function Chefs() {
             },
           }}
           sx={{
-            width: { xs: "100%", sm: "60%", lg: "40%" },
+            width: { xs: "70%", sm: "30%", lg: "40%" },
           }}
         />
         {/* <IconButton>
@@ -70,12 +75,12 @@ export default function Chefs() {
           px: { xs: 2, md: 0 },
         }}
       >
-        {nearByShops.map((item, idx) => (
+        {chefs.map((item, idx) => (
           <Box key={idx} sx={{ flexShrink: 0, pl: 1 }}>
             <CardComponent data={item} />
           </Box>
         ))}
-        {nearByShops.map((item, idx) => (
+        {chefs.map((item, idx) => (
           <Box key={idx} sx={{ flexShrink: 0, pl: 1 }}>
             <CardComponent data={item} />
           </Box>

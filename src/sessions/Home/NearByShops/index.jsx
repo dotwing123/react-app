@@ -10,11 +10,12 @@ import {
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { nearByShops } from "../../../constants/data";
 import CardComponent from "../../../components/CommonComponents/Card";
+import { useSelector } from "react-redux";
 
 const NearbyShopCarousel = () => {
   const theme = useTheme();
+  const nearByShops = useSelector((state) => state?.sampleData?.nearbyShops);
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const scrollContainerRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);

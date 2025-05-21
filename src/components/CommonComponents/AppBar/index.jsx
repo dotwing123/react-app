@@ -7,39 +7,28 @@ import {
   IconButton,
   Typography,
   Box,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
   Avatar,
-  Button,
-  Container,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import {
   Menu as MenuIcon,
-  Close as CloseIcon,
-  ChevronRight as ChevronRightIcon,
   ExpandMore as ExpandMoreIcon,
-  Logout as LogoutIcon,
-  Settings as SettingsIcon,
-  Share as ShareIcon,
-  Feedback as FeedbackIcon,
 } from "@mui/icons-material";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
-import PersonIcon from "@mui/icons-material/Person";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ReceiptIcon from "@mui/icons-material/Receipt";
 import Logo from "../../../assets/dashboardLogo.png";
 import Sidebar from "../SideBar";
 import { useNavigate } from "react-router-dom";
+
 const Header = () => {
   const navigateTo = useNavigate();
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
 
   const toggleDrawer = (open) => {
     setDrawerOpen(open);
@@ -55,22 +44,34 @@ const Header = () => {
         sx={{ bgcolor: "#fff", height: 100, justifyContent: "center" }}
       >
         <Toolbar>
+          {/* Hamburger Menu */}
           <IconButton
             edge="start"
             color="inherit"
             aria-label="menu"
             onClick={() => toggleDrawer(true)}
-            sx={{ mr: 2, ml: 3 }}
+            sx={{
+              mr: isMobile || isTablet ? 1 : 2,
+              ml: isMobile || isTablet ? 0 : 3,
+            }}
           >
             <MenuIcon />
           </IconButton>
-          <img src={Logo} width={260} height={70} />
+
+          {/* Logo */}
+          <img
+            src={Logo}
+            width={isMobile ? 140 : isTablet ? 180 : 260}
+            height={isMobile ? 40 : 70}
+          />
+
+          {/* Spacer */}
           <Box sx={{ flexGrow: 1 }} />
 
           {/* Navigation Items */}
           <Box
             sx={{
-              display: "flex",
+              display: { xs: "none", sm: "flex" },
               alignItems: "center",
               gap: 3,
               cursor: "pointer",
@@ -81,11 +82,7 @@ const Header = () => {
               onClick={() => navigateTo("/home/chefs")}
             >
               <RestaurantIcon color="action" />
-              <Typography
-                variant="body1"
-                color="text.primary"
-                sx={{ display: { xs: "none", sm: "block" } }}
-              >
+              <Typography variant="body1" color="text.primary">
                 Chefs
               </Typography>
             </Box>
@@ -100,33 +97,21 @@ const Header = () => {
               onClick={() => navigateTo("/home/cuisines")}
             >
               <MenuBookIcon sx={{ color: "success.main" }} />
-              <Typography
-                variant="body1"
-                color="success.main"
-                sx={{ display: { xs: "none", sm: "block" } }}
-              >
+              <Typography variant="body1" color="success.main">
                 Cuisines
               </Typography>
             </Box>
 
             <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
               <LocalOfferIcon color="action" />
-              <Typography
-                variant="body1"
-                color="text.primary"
-                sx={{ display: { xs: "none", sm: "block" } }}
-              >
+              <Typography variant="body1" color="text.primary">
                 Offers
               </Typography>
             </Box>
 
             <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
               <ShoppingBagIcon color="action" />
-              <Typography
-                variant="body1"
-                color="text.primary"
-                sx={{ display: { xs: "none", sm: "block" } }}
-              >
+              <Typography variant="body1" color="text.primary">
                 Cart
               </Typography>
             </Box>
@@ -150,8 +135,6 @@ const Header = () => {
 
       {/* Sidebar Drawer */}
       <Sidebar open={drawerOpen} onClose={() => toggleDrawer(false)} />
-
-      {/* Main Content */}
     </Box>
   );
 };

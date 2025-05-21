@@ -1,6 +1,6 @@
 // src/components/OtpVerification.jsx
 import React, { useState } from "react";
-import { Box, Grid, Typography, Button } from "@mui/material";
+import { Box, Grid, Typography, Button, useMediaQuery } from "@mui/material";
 import AuthLeftSection from "../../../components/AuthLeftSection";
 import { useNavigate } from "react-router-dom";
 import bannerImg from "../../../assets/bannerSlide.png";
@@ -13,6 +13,8 @@ import theme from "../../../theme";
 const OtpVerification = () => {
   const navigateTo = useNavigate();
   const [otp, setOtp] = useState("");
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
   const handleSubmit = (values, { setSubmitting }) => {
     console.log("Form values:", values);
     secureLocalStorage.setItem("appTkn", "abcdefgh");
@@ -31,8 +33,8 @@ const OtpVerification = () => {
     marginBottom: 8,
   };
   const otpInput = {
-    width: 65,
-    height: 65,
+    width: isMobile || isTablet ? 35 : 65,
+    height: isMobile || isTablet ? 35 : 65,
     backgroundColor: "#EBEAF5",
     borderRadius: 9,
     border: "none",
@@ -40,15 +42,17 @@ const OtpVerification = () => {
   };
   return (
     <Grid container sx={{ height: "100vh" }}>
-      <Grid item xs={12} md={6}>
-        <AuthLeftSection
-          content1={"Let's help you"}
-          content2={"find your favorite"}
-          description={"Meal"}
-          bannerImg={bannerImg}
-          isCovered={true}
-        />
-      </Grid>
+      {!isMobile && !isTablet && (
+        <Grid item xs={12} md={6}>
+          <AuthLeftSection
+            content1={"Let's help you"}
+            content2={"find your favorite"}
+            description={"Meal"}
+            bannerImg={bannerImg}
+            isCovered={true}
+          />
+        </Grid>
+      )}
       <Grid
         item
         xs={12}
