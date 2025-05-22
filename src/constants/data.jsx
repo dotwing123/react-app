@@ -4,6 +4,7 @@ import Chef1 from "../assets/chef_1.png";
 import Chef2 from "../assets/chef_2.png";
 import { useDispatch } from "react-redux";
 import {
+  setChefDetailsFoods,
   setChefs,
   setCuisines,
   setFoods,
@@ -17,6 +18,7 @@ const SaveData = () => {
     dispatch(setCuisines(cuisines));
     dispatch(setNearByShops(nearByShops));
     dispatch(setFoods(foods));
+    dispatch(setChefDetailsFoods(chefDetailsFoodList));
   }, []);
   return <></>;
 };
@@ -93,6 +95,7 @@ const nearByShops = [
     timing: "09:00 AM to 05:00 PM",
     distance: "0.35 mi",
     language: "Italian, French",
+    isOffline: false,
   },
   {
     chefImage: Chef2,
@@ -102,6 +105,7 @@ const nearByShops = [
     timing: "09:00 AM to 05:00 PM",
     distance: "0.35 mi",
     language: "Italian, French",
+    isOffline: false,
   },
   {
     chefImage: Chef1,
@@ -111,6 +115,7 @@ const nearByShops = [
     timing: "09:00 AM to 05:00 PM",
     distance: "0.35 mi",
     language: "Italian, French",
+    isOffline: true,
   },
   {
     chefImage: Chef,
@@ -120,6 +125,7 @@ const nearByShops = [
     timing: "09:00 AM to 05:00 PM",
     distance: "0.35 mi",
     language: "Italian, French",
+    isOffline: false,
   },
   {
     chefImage: Chef1,
@@ -129,6 +135,7 @@ const nearByShops = [
     timing: "09:00 AM to 05:00 PM",
     distance: "0.35 mi",
     language: "Italian, French",
+    isOffline: false,
   },
   {
     chefImage: Chef2,
@@ -138,6 +145,7 @@ const nearByShops = [
     timing: "09:00 AM to 05:00 PM",
     distance: "0.35 mi",
     language: "Italian, French",
+    isOffline: false,
   },
   {
     chefImage: Chef,
@@ -147,6 +155,7 @@ const nearByShops = [
     timing: "09:00 AM to 05:00 PM",
     distance: "0.35 mi",
     language: "Italian, French",
+    isOffline: true,
   },
 ];
 
@@ -222,3 +231,196 @@ const foods = [
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-SBU26aB79aYiJ0K5wLXO5jaFWsCV88.png",
   },
 ];
+
+const chefDetailsFoodList = {
+  cuisines: [
+    {
+      id: "italian",
+      name: "Italian",
+      count: 12,
+      categories: [
+        {
+          id: "appetizers",
+          name: "Appetizers",
+          image: "/images/italian/appetizers.jpg",
+        },
+        {
+          id: "first-courses",
+          name: "First Courses",
+          image: "/images/italian/first-courses.jpg",
+        },
+        {
+          id: "main-courses",
+          name: "Main Courses",
+          image: "/images/italian/main-courses.jpg",
+        },
+        {
+          id: "side-dishes",
+          name: "Side Dishes",
+          image: "/images/italian/side-dishes.jpg",
+        },
+        {
+          id: "cheese-fruit",
+          name: "Cheese & Fruit",
+          image: "/images/italian/cheese-fruit.jpg",
+        },
+        {
+          id: "pizza",
+          name: "Pizza",
+          image: "/images/italian/pizza.jpg",
+        },
+        {
+          id: "coffee-digestives",
+          name: "Coffee & Digestives",
+          image: "/images/italian/coffee-digestives.jpg",
+        },
+        {
+          id: "desserts",
+          name: "Desserts",
+          image: "/images/italian/desserts.jpg",
+        },
+      ],
+    },
+    {
+      id: "chinese",
+      name: "Chinese",
+      count: 8,
+      categories: [
+        {
+          id: "appetizers",
+          name: "Appetizers",
+          image: "/images/chinese/appetizers.jpg",
+        },
+        {
+          id: "dim-sum",
+          name: "Dim Sum",
+          image: "/images/chinese/dim-sum.jpg",
+        },
+        {
+          id: "noodles",
+          name: "Noodles",
+          image: "/images/chinese/noodles.jpg",
+        },
+        {
+          id: "rice-dishes",
+          name: "Rice Dishes",
+          image: "/images/chinese/rice-dishes.jpg",
+        },
+        {
+          id: "main-courses",
+          name: "Main Courses",
+          image: "/images/chinese/main-courses.jpg",
+        },
+        {
+          id: "soups",
+          name: "Soups",
+          image: "/images/chinese/soups.jpg",
+        },
+        {
+          id: "seafood",
+          name: "Seafood",
+          image: "/images/chinese/seafood.jpg",
+        },
+        {
+          id: "desserts",
+          name: "Desserts",
+          image: "/images/chinese/desserts.jpg",
+        },
+      ],
+    },
+    {
+      id: "french",
+      name: "French",
+      count: 12,
+      categories: [
+        {
+          id: "appetizers",
+          name: "Appetizers",
+          image: "/images/french/appetizers.jpg",
+        },
+        {
+          id: "soups",
+          name: "Soups",
+          image: "/images/french/soups.jpg",
+        },
+        {
+          id: "salads",
+          name: "Salads",
+          image: "/images/french/salads.jpg",
+        },
+        {
+          id: "main-courses",
+          name: "Main Courses",
+          image: "/images/french/main-courses.jpg",
+        },
+        {
+          id: "seafood",
+          name: "Seafood",
+          image: "/images/french/seafood.jpg",
+        },
+        {
+          id: "poultry",
+          name: "Poultry",
+          image: "/images/french/poultry.jpg",
+        },
+        {
+          id: "cheese",
+          name: "Cheese",
+          image: "/images/french/cheese.jpg",
+        },
+        {
+          id: "desserts",
+          name: "Desserts",
+          image: "/images/french/desserts.jpg",
+        },
+      ],
+    },
+    {
+      id: "japanese",
+      name: "Japanese",
+      count: 10,
+      categories: [
+        {
+          id: "appetizers",
+          name: "Appetizers",
+          image: "/images/japanese/appetizers.jpg",
+        },
+        {
+          id: "sushi",
+          name: "Sushi",
+          image: "/images/japanese/sushi.jpg",
+        },
+        {
+          id: "sashimi",
+          name: "Sashimi",
+          image: "/images/japanese/sashimi.jpg",
+        },
+        {
+          id: "noodles",
+          name: "Noodles",
+          image: "/images/japanese/noodles.jpg",
+        },
+        {
+          id: "rice-dishes",
+          name: "Rice Dishes",
+          image: "/images/japanese/rice-dishes.jpg",
+        },
+        {
+          id: "main-courses",
+          name: "Main Courses",
+          image: "/images/japanese/main-courses.jpg",
+        },
+        {
+          id: "tempura",
+          name: "Tempura",
+          image: "/images/japanese/tempura.jpg",
+        },
+        {
+          id: "desserts",
+          name: "Desserts",
+          image: "/images/japanese/desserts.jpg",
+        },
+      ],
+    },
+  ],
+};

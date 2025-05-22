@@ -10,6 +10,7 @@ import Home from "../sessions/Home";
 import Cuisines from "../sessions/Cuisines";
 import Chefs from "../sessions/Chefs";
 import Dashboard from "../components/Dashboard";
+import ChefDetails from "../sessions/ChefDetails";
 
 const LoadingFallback = () => (
   <Box
@@ -31,7 +32,10 @@ const AppRoutes = () => {
         <Suspense fallback={<LoadingFallback />}>
           <Routes>
             {/* DELETE AFTER DEVELOPMENT */}
-            <Route path="/dashboard" element={<PrivateRoute element={<Dashboard />} />} />
+            <Route
+              path="/dashboard"
+              element={<PrivateRoute element={<Dashboard />} />}
+            />
             {/* DELETE AFTER DEVELOPMENT */}
 
             <Route path="/" element={<App />} />
@@ -46,6 +50,10 @@ const AppRoutes = () => {
             <Route
               path="/home/chefs"
               element={<PrivateRoute element={<Chefs />} />}
+            />
+            <Route
+              path="/home/chefs/chefdetails"
+              element={<PrivateRoute element={<ChefDetails />} />}
             />
           </Routes>
         </Suspense>

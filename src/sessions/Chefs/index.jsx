@@ -12,7 +12,9 @@ import CardComponent from "../../components/CommonComponents/Card";
 import SearchIcon from "@mui/icons-material/Search";
 import TuneOutlinedIcon from "@mui/icons-material/TuneOutlined";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 export default function Chefs() {
+  const navigateTo = useNavigate();
   const chefs = useSelector((state) => state?.sampleData?.chefs);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -77,12 +79,18 @@ export default function Chefs() {
       >
         {chefs.map((item, idx) => (
           <Box key={idx} sx={{ flexShrink: 0, pl: 1 }}>
-            <CardComponent data={item} />
+            <CardComponent
+              data={item}
+              onClick={() => navigateTo("/home/chefs/chefdetails")}
+            />
           </Box>
         ))}
         {chefs.map((item, idx) => (
           <Box key={idx} sx={{ flexShrink: 0, pl: 1 }}>
-            <CardComponent data={item} />
+            <CardComponent
+              data={item}
+              onClick={() => navigateTo("/home/chefs/chefdetails")}
+            />
           </Box>
         ))}
       </Box>

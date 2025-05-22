@@ -1,4 +1,3 @@
-import { NearMe } from "@mui/icons-material";
 import { ACTION_TYPES } from "../../../constants";
 
 const initialState = {
@@ -6,6 +5,7 @@ const initialState = {
   cuisines: [],
   nearbyShops: [],
   foods: [],
+  chefFoods: [],
 };
 
 const DataReducer = (state = initialState, action) => {
@@ -32,6 +32,12 @@ const DataReducer = (state = initialState, action) => {
       return {
         ...state,
         foods: action.payload,
+      };
+    }
+    case ACTION_TYPES.SET_CHEF_FOODS: {
+      return {
+        ...state,
+        chefFoods: action.payload,
       };
     }
     default:
