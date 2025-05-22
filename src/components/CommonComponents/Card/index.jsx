@@ -114,16 +114,18 @@ import {
   Star,
 } from "@mui/icons-material";
 import chef from "../../../assets/chef.png";
+import './style.css';
 
 export default function CardComponent({ data }) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const { chefImage, shopName, chefName, rating, timing, distance, language } =
+  const { chefImage, shopName, chefName, rating, timing, distance, language, isOffline = true } =
     data || {};
 
   return (
     <Card
-      sx={{ width: "100%", maxWidth: isMobile ? 300 : 326, borderRadius: 2 }}
+      sx={{ width: "100%", maxWidth: isMobile ? 300 : 326, borderRadius: 2, position: 'relative' }}
+      className="cardD"
     >
       <CardActionArea>
         <CardMedia
@@ -166,6 +168,27 @@ export default function CardComponent({ data }) {
           </Typography>
         </CardContent>
       </CardActionArea>
+      {
+        isOffline &&
+        <Box sx={{
+          backgroundColor: 'rgba(255, 255, 255, 0.4)',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          pt: '25%'
+        }}>
+          <Chip
+            color="error"
+            label={'OFFLINE'}
+            size="small"
+            sx={{ my: 1, color: "#fff", borderRadius: 0.7 }}
+          />
+        </Box>
+      }
     </Card>
   );
 }

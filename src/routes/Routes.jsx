@@ -9,6 +9,7 @@ import PrivateRoute from "../components/PrivateRoute";
 import Home from "../sessions/Home";
 import Cuisines from "../sessions/Cuisines";
 import Chefs from "../sessions/Chefs";
+import Dashboard from "../components/Dashboard";
 
 const LoadingFallback = () => (
   <Box
@@ -29,6 +30,10 @@ const AppRoutes = () => {
       <Router>
         <Suspense fallback={<LoadingFallback />}>
           <Routes>
+            {/* DELETE AFTER DEVELOPMENT */}
+            <Route path="/dashboard" element={<PrivateRoute element={<Dashboard />} />} />
+            {/* DELETE AFTER DEVELOPMENT */}
+
             <Route path="/" element={<App />} />
             <Route path="/verifyotp" element={<OtpVerification />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />

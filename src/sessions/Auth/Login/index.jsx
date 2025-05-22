@@ -63,6 +63,7 @@ const HomeChefLogin = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
   const [isOtpLogin, setIsOtpLogin] = useState(false);
+
   const handleSubmit = (values, { setSubmitting }) => {
     console.log("Form values:", values);
     if (isOtpLogin && values?.fullName && values?.mobileNo) {
@@ -72,6 +73,7 @@ const HomeChefLogin = () => {
       navigateTo("/home");
     }
   };
+  
   const loginTypeContainer = {
     display: isMobile ? "block" : "flex",
     flexDirection: "row",

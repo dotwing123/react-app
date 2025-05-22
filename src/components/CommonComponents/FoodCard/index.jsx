@@ -11,8 +11,9 @@ import {
   Rating,
   useTheme,
   useMediaQuery,
+  Chip,
 } from "@mui/material";
-import { Favorite, FavoriteBorder } from "@mui/icons-material";
+import { Favorite, FavoriteBorder, Star } from "@mui/icons-material";
 import FoodImage from "../../../assets/food.png";
 export default function FoodCard(props) {
   const { title, price, cuisine, description, rating, imageUrl } = props?.data;
@@ -79,8 +80,15 @@ export default function FoodCard(props) {
           <Typography variant="body1" color="text.secondary" gutterBottom>
             {cuisine}
           </Typography>
+          <Chip
+            avatar={<Star fontSize="small" sx={{ color: "#fff !important" }} />}
+            color="warning"
+            label={rating}
+            size="small"
+            sx={{ color: "#fff", borderRadius: 0.7 }}
+          />
 
-          <Box
+          {/* <Box
             sx={{
               display: "inline-flex",
               alignItems: "center",
@@ -106,7 +114,7 @@ export default function FoodCard(props) {
             <Typography variant="body2" fontWeight="medium" color="white">
               {rating}
             </Typography>
-          </Box>
+          </Box> */}
         </Box>
         <Typography variant="body2" color="text.secondary">
           {description}
