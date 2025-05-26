@@ -24,3 +24,7 @@ export const setChefDetailsFoods = (payload) => ({
   type: ACTION_TYPES.SET_CHEF_FOODS,
   payload,
 });
+export const setCuisinesList = (payload) => ({
+  type: ACTION_TYPES.SET_CUISINES_LIST,
+  payload,
+});

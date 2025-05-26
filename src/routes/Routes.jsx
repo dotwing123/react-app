@@ -11,6 +11,8 @@ import Cuisines from "../sessions/Cuisines";
 import Chefs from "../sessions/Chefs";
 import Dashboard from "../components/Dashboard";
 import ChefDetails from "../sessions/ChefDetails";
+import CuisineDetails from "../sessions/cuisineDetails";
+import CartPage from "../sessions/Cart";
 
 const LoadingFallback = () => (
   <Box
@@ -48,12 +50,20 @@ const AppRoutes = () => {
               element={<PrivateRoute element={<Cuisines />} />}
             />
             <Route
+              path="/home/cuisines/cuisinedetails/:id"
+              element={<PrivateRoute element={<CuisineDetails />} />}
+            />
+            <Route
               path="/home/chefs"
               element={<PrivateRoute element={<Chefs />} />}
             />
             <Route
               path="/home/chefs/chefdetails"
               element={<PrivateRoute element={<ChefDetails />} />}
+            />
+            <Route
+              path="/home/cart"
+              element={<PrivateRoute element={<CartPage />} />}
             />
           </Routes>
         </Suspense>

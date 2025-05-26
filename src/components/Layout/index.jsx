@@ -21,7 +21,7 @@ const Layout = ({ children }) => {
         component="main"
         sx={{
           flexGrow: 1,
-          // pt: 2,
+          mt: "100px",
           // pl: 1,
           // //   marginLeft: sidebarOpen ? '240px' : '60px',
           // transition: 'margin-left 0.3s',

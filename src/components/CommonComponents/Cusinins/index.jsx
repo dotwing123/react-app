@@ -12,14 +12,14 @@ import { Star } from "@mui/icons-material";
 
 const Cuisine = (props) => {
   const {
-    title = "Caprese Salad",
-    rating = "4.2",
-    price = "2.7",
-    description = "A South Indian dish made with a thick pancake-like batter that includes a mix of different toppings such as onions, tomatoes, coriander, Spicy podi powder and carrot.",
+    title,
+    rating,
+    price,
+    description,
     image = dish,
     onClickAdd = () => {},
     isClickable = true,
-  } = props;
+  } = props?.data;
   return (
     <Card
       sx={{
@@ -69,7 +69,7 @@ const Cuisine = (props) => {
               background: "#000",
               height: 130,
               width: 130,
-              backgroundImage: `url(${image})`,
+              backgroundImage: `url(${dish})`,
               borderRadius: 2,
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",

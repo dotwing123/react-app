@@ -1,11 +1,19 @@
+import secureLocalStorage from "react-secure-storage";
 import { ACTION_TYPES } from "../../../constants";
 
+const chefs = secureLocalStorage.getItem("nearByShops");
+const cuisines = secureLocalStorage.getItem("nearByShops");
+const nearbyShops = secureLocalStorage.getItem("nearByShops");
+const foods = secureLocalStorage.getItem("nearByShops");
+const chefFoods = secureLocalStorage.getItem("nearByShops");
+const cuisinesList = secureLocalStorage.getItem("nearByShops");
 const initialState = {
-  chefs: [],
-  cuisines: [],
-  nearbyShops: [],
-  foods: [],
-  chefFoods: [],
+  chefs: JSON.parse(chefs) || [],
+  cuisines: JSON.parse(cuisines) || [],
+  nearbyShops: JSON.parse(nearbyShops) || [],
+  foods: JSON.parse(foods) || [],
+  chefFoods: JSON.parse(chefFoods) || [],
+  cuisinesList: JSON.parse(cuisinesList) || [],
 };
 
 const DataReducer = (state = initialState, action) => {
@@ -38,6 +46,12 @@ const DataReducer = (state = initialState, action) => {
       return {
         ...state,
         chefFoods: action.payload,
+      };
+    }
+    case ACTION_TYPES.SET_CUISINES_LIST: {
+      return {
+        ...state,
+        cuisinesList: action.payload,
       };
     }
     default:

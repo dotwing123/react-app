@@ -8,8 +8,8 @@ const SquareCard = ({ name, image }) => {
       <Box
         sx={{
           background: "#000",
-          height: 250,
-          width: "100%",
+          height: 300,
+          width: 300,
           backgroundImage: `url(${image})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",

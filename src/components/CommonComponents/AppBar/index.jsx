@@ -38,7 +38,7 @@ const Header = () => {
     <Box sx={{ flexGrow: 1 }}>
       {/* AppBar */}
       <AppBar
-        position="sticky"
+        position="fixed"
         color="default"
         elevation={1}
         sx={{ bgcolor: "#fff", height: 100, justifyContent: "center" }}
@@ -109,7 +109,10 @@ const Header = () => {
               </Typography>
             </Box>
 
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+            <Box
+              sx={{ display: "flex", alignItems: "center", gap: 1 }}
+              onClick={() => navigateTo("/home/cart")}
+            >
               <ShoppingBagIcon color="action" />
               <Typography variant="body1" color="text.primary">
                 Cart
